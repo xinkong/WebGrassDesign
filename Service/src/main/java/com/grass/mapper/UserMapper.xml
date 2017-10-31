@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.grass.mapper.UserMapper">
+
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO t_user(userName, userPwd, userHeadPic) VALUES (#{userName},#{userPwd},#{userHeadPic})
+    </insert>
+
+    <select id="findUserById" parameterType="int" resultType="user">
+        select * from t_user WHERE userId = #{userId};
+    </select>
+
+    <select id="login" parameterType="map" resultType="user">
+        select * from t_user WHERE userName = #{userName} AND userPwd = #{userPwd};
+    </select>
+
+</mapper>

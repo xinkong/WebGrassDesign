@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="GrassDesign">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="grassdesign">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="repast"/>
+    <schema id="7" parent="1" name="sakila"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="world"/>
+    <table id="10" parent="2" name="t_error"/>
+    <table id="11" parent="2" name="t_images_info">
+      <Comment>图片信息表</Comment>
+    </table>
+    <table id="12" parent="2" name="t_token"/>
+    <table id="13" parent="2" name="t_user"/>
+    <column id="14" parent="10" name="errorCode">
+      <Position>1</Position>
+      <Comment>错误编码</Comment>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="10" name="errorMessage">
+      <Position>2</Position>
+      <Comment>错误内容</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="10" name="errorMessageClient">
+      <Position>3</Position>
+      <Comment>客户端提示信息</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="17" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>errorCode</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="11" name="imageUrl">
+      <Position>1</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="11" name="imageWidth">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="20" parent="11" name="imageHeight">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="21" parent="11" name="imageSize">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="22" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>imageUrl</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="12" name="id">
+      <Position>1</Position>
+      <Comment>tokenId</Comment>
+      <DataType>varchar(40)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="12" name="userId">
+      <Position>2</Position>
+      <Comment>用户Id
+</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="12" name="careatTime">
+      <Position>3</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00 00:00:00.000&apos;</DefaultExpression>
+    </column>
+    <column id="26" parent="12" name="updateTime">
+      <Position>4</Position>
+      <Comment>修改时间</Comment>
+      <DataType>timestamp(3)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0000-00-00 00:00:00.000&apos;</DefaultExpression>
+    </column>
+    <column id="27" parent="13" name="userId">
+      <Position>1</Position>
+      <DataType>int(7)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="13" name="userName">
+      <Position>2</Position>
+      <Comment>用户名</Comment>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="13" name="userPwd">
+      <Position>3</Position>
+      <Comment>密码</Comment>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="13" name="userHeadPic">
+      <Position>4</Position>
+      <Comment>用户头像</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="31" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>userId</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

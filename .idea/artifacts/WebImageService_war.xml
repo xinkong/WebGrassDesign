@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WebImageService:war">
+    <output-path>$PROJECT_DIR$/WebImageService/target</output-path>
+    <root id="archive" name="WebImageService-1.0.war">
+      <element id="artifact" artifact-name="WebImageService:war exploded" />
+    </root>
+  </artifact>
+</component>
