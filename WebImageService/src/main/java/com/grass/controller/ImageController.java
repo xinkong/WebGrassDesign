@@ -29,7 +29,7 @@ import java.util.UUID;
 /**
  * Created by huchao on 2017/10/30.
  */
-@RequestMapping("/uploadImages")
+@RequestMapping("/fileUpload")
 @Controller
 public class ImageController extends BaseController {
 
@@ -79,50 +79,4 @@ public class ImageController extends BaseController {
 
         returnBackData(imageUrls);
     }
-
-
-    /**
-     * 一次上传多张图片
-     */
-    @RequestMapping("/threeFile")
-    public void threeFileUpload(@RequestParam("file") CommonsMultipartFile files[], HttpServletRequest request) throws Exception {
-
-        List<String> list = new ArrayList<String>();
-        // 获得项目的路径
-        ServletContext sc = request.getSession().getServletContext();
-        // 上传位置
-        String path = sc.getRealPath("/img") + "/"; // 设定文件保存的目录
-        File f = new File(path);
-        if (!f.exists())
-            f.mkdirs();
-
-        for (int i = 0; i < files.length; i++) {
-            // 获得原始文件名
-            String fileName = files[i].getOriginalFilename();
-            System.out.println("原始文件名:" + fileName);
-            // 新文件名
-            String newFileName = UUID.randomUUID() + fileName;
-            if (!files[i].isEmpty()) {
-                try {
-                    FileOutputStream fos = new FileOutputStream(path
-                            + newFileName);
-                    InputStream in = files[i].getInputStream();
-                    int b = 0;
-                    while ((b = in.read()) != -1) {
-                        fos.write(b);
-                    }
-                    fos.close();
-                    in.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            System.out.println("上传图片到:" + path + newFileName);
-            list.add(path + newFileName);
-
-        }
-        returnBackData(list);
-    }
-
-
 }
