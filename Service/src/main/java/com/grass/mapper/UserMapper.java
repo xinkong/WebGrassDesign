@@ -24,7 +24,7 @@ public interface UserMapper {
      * 根据用户ID查找用户
      * @param userId
      */
-    User findUserById(int userId);
+    User findUserById(long userId);
 
     /**
      * 登录,更具用户名密码匹配

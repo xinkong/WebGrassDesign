@@ -13,7 +13,7 @@ INSERT INTO `t_error` VALUES ('EG-U-001', '用户名或者密码不对', null);
 DROP TABLE IF EXISTS `t_token`;
 CREATE TABLE `t_token` (
   `id` varchar(40) NOT NULL COMMENT 'tokenId',
-  `userId` int(11) NOT NULL COMMENT '用户Id\n',
+  `userId` int(11) NOT NULL COMMENT '用户Id',
   `careatTime` timestamp(3) NOT NULL DEFAULT '0000-00-00 00:00:00.000' COMMENT '创建时间',
   `updateTime` timestamp(3) NOT NULL DEFAULT '0000-00-00 00:00:00.000' COMMENT '修改时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,3 +39,27 @@ CREATE TABLE `t_images_info` (
   `imageSize` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='图片信息表';
+
+#消息列表
+DROP TABLE IF EXISTS `t_msg_info`;
+CREATE TABLE `t_msg_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '消息ID',
+  `userId` int(11) NOT NULL COMMENT '用户Id',
+  `msgContent` text,
+  `msgImages` varchar(900) DEFAULT NULL,
+  `createTime` timestamp NOT NULL ,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
+
+#评论列表
+DROP TABLE IF EXISTS `t_comment`;
+CREATE TABLE `t_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `msgId` int(11) NOT NULL COMMENT '消息ID',
+  `commentUserID` int(11) NOT NULL COMMENT '评论用户Id',
+  `replyUserId` int(11) DEFAULT NULL COMMENT '回复id',
+  `content` varchar(255) NOT NULL COMMENT '评论内容',
+  `createTime` timestamp NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+

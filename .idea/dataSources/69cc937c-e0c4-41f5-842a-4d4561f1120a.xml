@@ -13,107 +13,182 @@
     <schema id="7" parent="1" name="sakila"/>
     <schema id="8" parent="1" name="sys"/>
     <schema id="9" parent="1" name="world"/>
-    <table id="10" parent="2" name="t_error"/>
-    <table id="11" parent="2" name="t_images_info">
+    <table id="10" parent="2" name="t_comment"/>
+    <table id="11" parent="2" name="t_error"/>
+    <table id="12" parent="2" name="t_images_info">
       <Comment>图片信息表</Comment>
     </table>
-    <table id="12" parent="2" name="t_token"/>
-    <table id="13" parent="2" name="t_user"/>
-    <column id="14" parent="10" name="errorCode">
+    <table id="13" parent="2" name="t_msg_info"/>
+    <table id="14" parent="2" name="t_token"/>
+    <table id="15" parent="2" name="t_user"/>
+    <column id="16" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="10" name="msgId">
+      <Position>2</Position>
+      <Comment>消息ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="10" name="commentUserID">
+      <Position>3</Position>
+      <Comment>评论用户Id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="10" name="replyUserId">
+      <Position>4</Position>
+      <Comment>回复id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="content">
+      <Position>5</Position>
+      <Comment>评论内容</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="10" name="createTime">
+      <Position>6</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="22" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="23" parent="11" name="errorCode">
       <Position>1</Position>
       <Comment>错误编码</Comment>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="10" name="errorMessage">
+    <column id="24" parent="11" name="errorMessage">
       <Position>2</Position>
       <Comment>错误内容</Comment>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="10" name="errorMessageClient">
+    <column id="25" parent="11" name="errorMessageClient">
       <Position>3</Position>
       <Comment>客户端提示信息</Comment>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="17" parent="10" name="PRIMARY">
+    <key id="26" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>errorCode</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="18" parent="11" name="imageUrl">
+    <column id="27" parent="12" name="imageUrl">
       <Position>1</Position>
       <DataType>varchar(100)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="11" name="imageWidth">
+    <column id="28" parent="12" name="imageWidth">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="20" parent="11" name="imageHeight">
+    <column id="29" parent="12" name="imageHeight">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <column id="21" parent="11" name="imageSize">
+    <column id="30" parent="12" name="imageSize">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="22" parent="11" name="PRIMARY">
+    <key id="31" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>imageUrl</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="23" parent="12" name="id">
+    <column id="32" parent="13" name="id">
+      <Position>1</Position>
+      <Comment>消息ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="13" name="userId">
+      <Position>2</Position>
+      <Comment>用户Id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="13" name="msgContent">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="35" parent="13" name="msgImages">
+      <Position>4</Position>
+      <DataType>varchar(900)|0</DataType>
+    </column>
+    <column id="36" parent="13" name="createTime">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <key id="37" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="38" parent="14" name="id">
       <Position>1</Position>
       <Comment>tokenId</Comment>
       <DataType>varchar(40)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="12" name="userId">
+    <column id="39" parent="14" name="userId">
       <Position>2</Position>
       <Comment>用户Id
 </Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="12" name="careatTime">
+    <column id="40" parent="14" name="careatTime">
       <Position>3</Position>
       <Comment>创建时间</Comment>
       <DataType>timestamp(3)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0000-00-00 00:00:00.000&apos;</DefaultExpression>
     </column>
-    <column id="26" parent="12" name="updateTime">
+    <column id="41" parent="14" name="updateTime">
       <Position>4</Position>
       <Comment>修改时间</Comment>
       <DataType>timestamp(3)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0000-00-00 00:00:00.000&apos;</DefaultExpression>
     </column>
-    <column id="27" parent="13" name="userId">
+    <column id="42" parent="15" name="userId">
       <Position>1</Position>
       <DataType>int(7)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="28" parent="13" name="userName">
+    <column id="43" parent="15" name="userName">
       <Position>2</Position>
       <Comment>用户名</Comment>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="13" name="userPwd">
+    <column id="44" parent="15" name="userPwd">
       <Position>3</Position>
       <Comment>密码</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="30" parent="13" name="userHeadPic">
+    <column id="45" parent="15" name="userHeadPic">
       <Position>4</Position>
       <Comment>用户头像</Comment>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="31" parent="13" name="PRIMARY">
+    <key id="46" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userId</ColNames>
       <Primary>1</Primary>

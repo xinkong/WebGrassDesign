@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.grass.mapper.MsgInfoMapper">
+
+    <!--映射msg实体-->
+    <resultMap id="msgInfos" type="msgInfoVo">
+        <id column="mId" property="id"/>
+        <result column="msgContent" property="msgContent"/>
+        <result column="msgImages" property="msgImages"/>
+        <result column="createTime" property="createTime"/>
+        <association property="userInfo" javaType="user">
+            <id column="mUserId" property="userId"/>
+            <result column="mUserName" property="userName"/>
+            <result column="mUserHeadPic" property="userHeadPic"/>
+        </association>
+        <collection property="comments" ofType="commentVo">
+            <id column="cmId" property="id"/>
+            <result column="msgId" property="msgId"/>
+            <result column="content" property="content"/>
+            <result column="cmCreateTime" property="createTime"/>
+            <association property="commentUser" javaType="user">
+                <id column="cuUserId" property="userId"/>
+                <result column="cuUserName" property="userName"/>
+                <result column="cuUserHeadPic" property="userHeadPic"/>
+            </association>
+            <association property="replyUser" javaType="user">
+                <id column="ruUserId" property="userId"/>
+                <result column="ruUserName" property="userName"/>
+                <result column="ruUserHeadPic" property="userHeadPic"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="findMsg" parameterType="map" resultMap="msgInfos">
+        SELECT m.id AS mId,m.msgContent,m.createTime,m.msgImages,
+                mu.userId AS mUserId,mu.userHeadPic AS mUserHeadPic,mu.userName AS mUserName,
+                cm.id AS cmId,cm.msgId,cm.createTime AS cmCreateTime,cm.content,
+                cu.userId AS cuUserId,cu.userHeadPic AS cuUserHeadPic,cu.userName AS cuUserName,
+                ru.userId AS ruUserId,ru.userHeadPic AS ruUserHeadPic,ru.userName AS ruUserName
+        from t_msg_info m
+        LEFT JOIN t_user mu ON m.userId = mu.userId
+        LEFT JOIN t_comment cm ON m.id = cm.msgId
+        LEFT JOIN t_user cu ON cm.commentUserID = cu.userId
+        LEFT JOIN t_user ru ON cm.replyUserId = ru.userId
+        WHERE 1=1
+        <if test="userId != 0">AND m.userId = #{userId}</if>
+        ORDER BY m.createTime DESC
+        LIMIT #{pageIndex},#{pageSize};
+
+    </select>
+
+    <insert id="saveMsg" parameterType="msgInfo">
+
+        insert into t_msg_info (userId, msgContent, msgImages,createTime)
+                          values (#{userId},#{msgContent},#{msgImages},#{createTime});
+
+    </insert>
+
+</mapper>
