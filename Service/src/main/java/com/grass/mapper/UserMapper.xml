@@ -6,7 +6,7 @@
         INSERT INTO t_user(userName, userPwd, userHeadPic) VALUES (#{userName},#{userPwd},#{userHeadPic})
     </insert>
 
-    <select id="findUserById" parameterType="int" resultType="user">
+    <select id="findUserById" parameterType="long" resultType="user">
         select * from t_user WHERE userId = #{userId};
     </select>
 

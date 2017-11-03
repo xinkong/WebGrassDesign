@@ -1,3 +1,15 @@
+#设置mysql支持emoji
+#C:\ProgramData\MySQL\MySQL Server 5.7\my.ini
+#[client]
+#default-character-set=utf8mb4
+#[mysql] 去掉多余的
+#default-character-set=utf8mb4
+#[mysqld]
+#character-set-server=utf8mb4
+#init_connect='SET NAMES utf8mb4'
+#查看数据库字符集 SHOW VARIABLES WHERE Variable_name LIKE 'character%' OR Variable_name LIKE 'collation%';
+
+
 #创建错误码对应表
 DROP TABLE IF EXISTS `t_error`;
 CREATE TABLE `t_error` (

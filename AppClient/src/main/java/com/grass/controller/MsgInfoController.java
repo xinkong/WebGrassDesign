@@ -26,6 +26,7 @@ public class MsgInfoController extends BaseController{
      * @param info
      * @throws Exception
      */
+    @RequestMapping("/saveMsg")
     public void saveMsg(MsgInfo info) throws Exception{
         msgInfoService.saveMsg(info);
         returnBackData("发送成功");
