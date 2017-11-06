@@ -1,32 +1,23 @@
-Camel Router WAR Project with Web Console and REST Support
-==========================================================
+一台电脑同时运行多个tomcat配置方法:
 
-This project bundles the Camel Web Console, REST API, and some
-sample routes as a WAR. You can build the WAR by running
+1.使用压缩版的tomcat不能使用安装版的。
 
-mvn install
+2.第一个tomcat的配置不变。
 
-You can then run the project by dropping the WAR into your 
-favorite web container or just run
+3.增加环境变量CATALINA_HOME2，值为新的tomcat的地址。
 
-mvn jetty:run
+4.修改新的tomcat中的startup.bat，把其中的CATALINA_HOME改为CATALINA_HOME2。
 
-to start up and deploy to Jetty.
+5.修改新的tomcat中的catalina.bat，把其中的CATALINA_HOME改为CATALINA_HOME2。
 
+6.修改conf/server.xml文件：
 
-Web Console
-===========
+      6.1 <Server port="8005" shutdown="SHUTDOWN">把端口改为没有是使用的端口，如8006。
 
-You can view the Web Console by pointing your browser to http://localhost:8080/
+      6.2 <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" /> 把端口改为没有是使用的端口，如8082。
 
-You should be able to do things like
-
-    * browse the available endpoints
-    * browse the messages on an endpoint if it is a BrowsableEndpoint
-    * send a message to an endpoint
-    * create new endpoints
-
-For more help see the Apache Camel documentation
-
-    http://camel.apache.org/
+       6.3<Connector port="8090" protocol="AJP/1.3" redirectPort="8443" /> 把端口改为没有是使用的端口，如8092。
+7.这样就可以在同一台电脑上同时运行多个tomcat了。
     

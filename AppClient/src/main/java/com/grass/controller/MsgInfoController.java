@@ -4,7 +4,11 @@ import com.grass.entity.MsgInfo;
 import com.grass.service.MsgInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by huchao on 2017/11/1.
@@ -26,8 +30,8 @@ public class MsgInfoController extends BaseController{
      * @param info
      * @throws Exception
      */
-    @RequestMapping("/saveMsg")
-    public void saveMsg(MsgInfo info) throws Exception{
+    @RequestMapping(value = "/saveMsg" ,method = RequestMethod.POST)
+    public void saveMsg(@RequestBody MsgInfo info) throws Exception{
         msgInfoService.saveMsg(info);
         returnBackData("发送成功");
     }
