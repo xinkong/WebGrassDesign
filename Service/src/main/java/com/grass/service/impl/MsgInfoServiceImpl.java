@@ -38,10 +38,10 @@ public class MsgInfoServiceImpl implements MsgInfoService {
                     ImagesInfo info = new ImagesInfo();
                     //生成原始图片地址
                     info.setImageUrl(PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
-                            + File.separator + path);
+                            + "/"+ path);
                     //生成缩略图地址
                     info.setImagemThumbnailUrl(PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
-                            + File.separator + PropertyUtil.getProperty("thumbnailPath") + File.separator + path);
+                            +"/" + PropertyUtil.getProperty("thumbnailPath") + "/" + path);
                     imagesInfos.add(info);
                 }
             }
