@@ -2,6 +2,7 @@ package com.grass.entity.vo;
 
 
 import com.grass.entity.Comment;
+import com.grass.entity.ImagesInfo;
 import com.grass.entity.User;
 
 import java.util.Date;
@@ -15,6 +16,16 @@ public class MsgInfoVo {
   private Date createTime;
   private User userInfo;
   private List<Comment> comments;
+  private List<ImagesInfo> imagesInfo;
+
+
+  public List<ImagesInfo> getImagesInfo() {
+    return imagesInfo;
+  }
+
+  public void setImagesInfo(List<ImagesInfo> imagesInfo) {
+    this.imagesInfo = imagesInfo;
+  }
 
   public long getId() {
     return id;

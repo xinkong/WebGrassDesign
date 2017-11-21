@@ -16,7 +16,7 @@
 </head>
 <body>
 <center>
-    <form action="uploadImages/upload"
+    <form action="fileUpload/upload"
           method="post" enctype="multipart/form-data">
         <input type="file" name="file" />
         <input type="submit" value="上 传" />

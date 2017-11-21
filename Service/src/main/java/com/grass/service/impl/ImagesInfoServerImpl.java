@@ -18,17 +18,14 @@ import java.io.File;
 @Service
 public class ImagesInfoServerImpl implements ImagesInfoServer {
 
-    @Autowired
-    private ImagesInfoMapper imagesInfoMapper;
 
     @Override
-    public String saveImageInfo(ImagesInfo info) {
+    public String saveImageInfo(String originalPath) {
         //生成图片ID
         String imageUrl = DataFormat.createUUID();
-        imageUrl = imageUrl + info.getImageUrl().substring(info.getImageUrl().lastIndexOf("."));
-        info.setImageUrl(imageUrl);
-        imagesInfoMapper.saveImageInfo(info);
-
+        imageUrl = imageUrl + originalPath.substring(originalPath.lastIndexOf("."));
+//        info.setImageUrl(imageUrl);
+//        imagesInfoMapper.saveImageInfo(info);
         return imageUrl;
     }
 }

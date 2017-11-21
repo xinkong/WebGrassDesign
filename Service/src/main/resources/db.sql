@@ -40,17 +40,17 @@ CREATE TABLE `t_user` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;
 
-#图片信息表
+#图片信息表,废弃
 DROP TABLE IF EXISTS `t_images_info`;
-CREATE TABLE `t_images_info` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `msgId` int(11) NOT NULL COMMENT '消息ID',
-  `imageUrl` varchar(100) NOT NULL,
-  `imageWidth` int(11) DEFAULT NULL,
-  `iamgeHeight` int(11) DEFAULT NULL,
-  `imageSize` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='图片信息表';
+#CREATE TABLE `t_images_info` (
+#  `id` int(11) NOT NULL AUTO_INCREMENT,
+# `msgId` int(11) NOT NULL COMMENT '消息ID',
+# `imageUrl` varchar(100) NOT NULL,
+# `imageWidth` int(11) DEFAULT NULL,
+# `iamgeHeight` int(11) DEFAULT NULL,
+# `imageSize` int(11) DEFAULT NULL,
+# PRIMARY KEY (`id`)
+)# ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='图片信息表';
 
 #消息列表
 DROP TABLE IF EXISTS `t_msg_info`;

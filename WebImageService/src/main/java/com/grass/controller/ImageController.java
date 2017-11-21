@@ -3,7 +3,9 @@ package com.grass.controller;
 import com.grass.entity.ImagesInfo;
 import com.grass.service.ImagesInfoServer;
 import com.grass.utils.DataFormat;
+import com.grass.utils.PropertyUtil;
 import com.grass.utils.Tools;
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,7 +38,6 @@ public class ImageController extends BaseController {
     @Autowired
     private ImagesInfoServer imagesInfoServer;
 
-
     /*
      *采用spring提供的上传文件的方法
      */
@@ -56,19 +57,26 @@ public class ImageController extends BaseController {
                 //一次遍历所有文件
                 MultipartFile file = multiRequest.getFile(iter.next().toString());
                 if (file != null) {
-                    BufferedImage image = ImageIO.read(file.getInputStream());
-                    String path = imagesInfoServer.saveImageInfo(new ImagesInfo(file.getOriginalFilename(), image.getWidth(), image.getHeight(), file.getSize()));
-//                    String path = DataFormat.createUUID()+file.getOriginalFilename();
+                    String path = imagesInfoServer.saveImageInfo(file.getOriginalFilename());
                     imageUrls = imageUrls + path + "|";
 
                     //获取磁盘路径
                     ServletContext sc = request.getSession().getServletContext();
                     // 上传位置
-                    String uploadPath = sc.getRealPath("/upload") + "/"; // 设定文件保存的目录
+                    String uploadPath = sc.getRealPath(File.separator+ PropertyUtil.getProperty("uploadPath")) + File.separator; // 设定文件保存的目录
                     File f = new File(uploadPath);
                     if (!f.exists())
                         f.mkdirs();
                     file.transferTo(new File(uploadPath + path));
+                    //生成对应的缩略图
+                    String thumbnailPath = uploadPath + PropertyUtil.getProperty("thumbnailPath") + File.separator;
+                    File thumbanilFile = new File(thumbnailPath);
+                    if(!thumbanilFile.exists()){
+                        thumbanilFile.mkdirs();
+                    }
+                    Thumbnails.of(uploadPath + path)
+                            .size(300, 300)
+                            .toFile(thumbnailPath+path);
                 }
             }
         }

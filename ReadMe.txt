@@ -20,4 +20,7 @@
 
        6.3<Connector port="8090" protocol="AJP/1.3" redirectPort="8443" /> 把端口改为没有是使用的端口，如8092。
 7.这样就可以在同一台电脑上同时运行多个tomcat了。
+
+vue.js
+https://cn.vuejs.org/v2/guide/installation.html
     

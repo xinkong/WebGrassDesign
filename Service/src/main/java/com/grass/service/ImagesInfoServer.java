@@ -12,8 +12,8 @@ public interface ImagesInfoServer {
 
     /**
      * 保存图片信息
-     * @param info
+     * @param originalPath 原始文件路径,获取文件名称
      */
-    String saveImageInfo(ImagesInfo info);
+    String saveImageInfo(String originalPath);
 
 }
