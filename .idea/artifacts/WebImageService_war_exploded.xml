@@ -7,6 +7,7 @@
           <element id="module-output" name="WebImageService" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: net.coobird:thumbnailator:0.4.8" />
           <element id="archive" name="Service-1.0.jar">
             <element id="module-output" name="Service" />
           </element>
