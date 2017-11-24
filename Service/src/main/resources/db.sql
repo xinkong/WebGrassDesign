@@ -18,6 +18,9 @@ CREATE TABLE `t_error` (
   `errorMessageClient` varchar(255) DEFAULT NULL COMMENT '客户端提示信息',
   PRIMARY KEY (`errorCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `t_error` VALUES ('EG-M-001', '发消息用户不存在', null);
+INSERT INTO `t_error` VALUES ('EG-M-002', '不能发送空消息', null);
+INSERT INTO `t_error` VALUES ('EG-M-003', '只能发送图片', null);
 INSERT INTO `t_error` VALUES ('EG-S-999', '系统异常', null);
 INSERT INTO `t_error` VALUES ('EG-U-001', '用户名或者密码不对', null);
 
