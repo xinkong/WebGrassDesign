@@ -23,6 +23,7 @@ INSERT INTO `t_error` VALUES ('EG-M-002', '不能发送空消息', null);
 INSERT INTO `t_error` VALUES ('EG-M-003', '只能发送图片', null);
 INSERT INTO `t_error` VALUES ('EG-S-999', '系统异常', null);
 INSERT INTO `t_error` VALUES ('EG-U-001', '用户名或者密码不对', null);
+INSERT INTO `t_error` VALUES ('EG-U-002', '更新用户信息不能为空', null);
 
 #创建Token表
 DROP TABLE IF EXISTS `t_token`;

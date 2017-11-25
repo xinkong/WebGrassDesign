@@ -13,5 +13,20 @@
     <select id="login" parameterType="map" resultType="user">
         select * from t_user WHERE userName = #{userName} AND userPwd = #{userPwd};
     </select>
+    
+    <update id="updateUser" parameterType="user">
+        
+        UPDATE t_user SET 
+          <if test="userName != null and '' != userName">
+              userName = #{userName}
+          </if>
+        <if test="userHeadPic != null and '' != userHeadPic">
+            userHeadPic = #{userHeadPic}
+        </if>
+        <if test="userPwd != null and '' != userPwd">
+            userPwd = #{userPwd}
+        </if>
+        WHERE userId = #{userId}
+    </update>
 
 </mapper>

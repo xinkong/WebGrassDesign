@@ -19,4 +19,10 @@ public interface UserService {
      */
     User login(String userName,String userPwd);
 
+    /**
+     * 更新用户信息
+     * @param user
+     */
+    User updateUser(User user);
+
 }

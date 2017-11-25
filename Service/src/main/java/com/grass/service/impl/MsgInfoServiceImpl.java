@@ -37,11 +37,9 @@ public class MsgInfoServiceImpl implements MsgInfoService {
                 for (String path : msg.getMsgImages().split("\\|")) {
                     ImagesInfo info = new ImagesInfo();
                     //生成原始图片地址
-                    info.setImageUrl(PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
-                            + "/"+ path);
+                    info.setImageUrl(Tools.getUploadFilePath()+ path);
                     //生成缩略图地址
-                    info.setImagemThumbnailUrl(PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
-                            +"/" + PropertyUtil.getProperty("thumbnailPath") + "/" + path);
+                    info.setImagemThumbnailUrl(Tools.getUploadFileThumbnailPath() + path);
                     imagesInfos.add(info);
                 }
             }

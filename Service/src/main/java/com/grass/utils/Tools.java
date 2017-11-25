@@ -20,12 +20,31 @@ public class Tools {
         return false;
     }
 
+    /**
+     * 获得上传文件路径
+     * @return
+     */
+    public static String getUploadFilePath(){
+        return PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
+                + "/";
+    }
+    /**
+     * 获得上传文件缓存路径
+     * @return
+     */
+    public static String getUploadFileThumbnailPath(){
+        return PropertyUtil.getProperty("serviceUrl") + PropertyUtil.getProperty("uploadPath")
+                +"/" + PropertyUtil.getProperty("thumbnailPath") + "/";
+    }
+
+
     public static String objToStr(String s) {
         if (getStringIsNull(s)) {
             return "";
         }
         return s.trim();
     }
+
 
     public static String getLoginToken() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
