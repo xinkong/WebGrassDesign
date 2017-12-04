@@ -24,6 +24,7 @@ INSERT INTO `t_error` VALUES ('EG-M-003', '只能发送图片', null);
 INSERT INTO `t_error` VALUES ('EG-S-999', '系统异常', null);
 INSERT INTO `t_error` VALUES ('EG-U-001', '用户名或者密码不对', null);
 INSERT INTO `t_error` VALUES ('EG-U-002', '更新用户信息不能为空', null);
+INSERT INTO `t_error` VALUES ('EG-U-003', '(登录)用户名密码不能为空', null);
 
 #创建Token表
 DROP TABLE IF EXISTS `t_token`;
@@ -54,7 +55,7 @@ DROP TABLE IF EXISTS `t_images_info`;
 # `iamgeHeight` int(11) DEFAULT NULL,
 # `imageSize` int(11) DEFAULT NULL,
 # PRIMARY KEY (`id`)
-)# ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='图片信息表';
+# ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='图片信息表';
 
 #消息列表
 DROP TABLE IF EXISTS `t_msg_info`;

@@ -25,6 +25,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String userName, String userPwd) {
+
+        if(Tools.getStringIsNull(userName) || Tools.getStringIsNull(userPwd)){
+            throw new BusinessException("EG-U-003");
+        }
+
         User login = userMapper.login(userName, userPwd);
         if(login == null){
             throw new BusinessException("EG-U-001");

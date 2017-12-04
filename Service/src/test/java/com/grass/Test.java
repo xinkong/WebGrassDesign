@@ -1,5 +1,7 @@
 package com.grass;
 
+import com.grass.entity.ErrorMsg;
+
 /**
  * Created by huchao on 2017/10/30.
  */

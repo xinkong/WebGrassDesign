@@ -31,6 +31,7 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/login")
     public void login(String userName, String userPwd) throws Exception {
+        Thread.sleep(2000);
         returnBackData(userService.login(userName, userPwd));
     }
 
