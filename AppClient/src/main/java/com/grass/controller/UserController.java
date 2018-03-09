@@ -31,13 +31,13 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/login")
     public void login(String userName, String userPwd) throws Exception {
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
         returnBackData(userService.login(userName, userPwd));
     }
 
 
     @RequestMapping("/updateUserInfo")
-    public void updateUserInfo(User user) throws Exception {
+        public void updateUserInfo(User user) throws Exception {
         returnBackData(userService.updateUser(user));
     }
 

@@ -9,6 +9,11 @@
 #init_connect='SET NAMES utf8mb4'
 #查看数据库字符集 SHOW VARIABLES WHERE Variable_name LIKE 'character%' OR Variable_name LIKE 'collation%';
 
+#允许其他用户连接上数据库
+#授权法。例如，你想myuser使用mypassword从任何主机连接到mysql服务器的话。
+#GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'%' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;
+#如果你想允许用户myuser从ip为192.168.1.3的主机连接到mysql服务器，并使用mypassword作为密码
+#GRANT ALL PRIVILEGES ON *.* TO 'myuser'@'192.168.1.3' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;
 
 #创建错误码对应表
 DROP TABLE IF EXISTS `t_error`;

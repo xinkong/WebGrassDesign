@@ -20,34 +20,38 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
+        User userByName = userMapper.findUserByName(user.getUserName());
+        if (userByName != null) {
+            throw new BusinessException("EG-U-004");
+        }
         userMapper.insertUser(user);
     }
 
     @Override
     public User login(String userName, String userPwd) {
 
-        if(Tools.getStringIsNull(userName) || Tools.getStringIsNull(userPwd)){
+        if (Tools.getStringIsNull(userName) || Tools.getStringIsNull(userPwd)) {
             throw new BusinessException("EG-U-003");
         }
 
         User login = userMapper.login(userName, userPwd);
-        if(login == null){
+        if (login == null) {
             throw new BusinessException("EG-U-001");
         }
-        if(!Tools.getStringIsNull(login.getUserHeadPic())){
-            login.setUserHeadPic(Tools.getUploadFilePath()+login.getUserHeadPic());
+        if (!Tools.getStringIsNull(login.getUserHeadPic())) {
+            login.setUserHeadPic(Tools.getUploadFilePath() + login.getUserHeadPic());
         }
         return login;
     }
 
     @Override
     public User updateUser(User user) {
-        if(Tools.getStringIsNull(user.getUserHeadPic())&& Tools.getStringIsNull(user.getUserName())&&Tools.getStringIsNull(user.getUserPwd())){
+        if (Tools.getStringIsNull(user.getUserHeadPic()) && Tools.getStringIsNull(user.getUserName()) && Tools.getStringIsNull(user.getUserPwd())) {
             throw new BusinessException("EG-U-002");
         }
         userMapper.updateUser(user);
-        if(!Tools.getStringIsNull(user.getUserHeadPic())){
-            user.setUserHeadPic(Tools.getUploadFilePath()+user.getUserHeadPic());
+        if (!Tools.getStringIsNull(user.getUserHeadPic())) {
+            user.setUserHeadPic(Tools.getUploadFilePath() + user.getUserHeadPic());
         }
         return user;
     }

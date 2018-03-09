@@ -9,6 +9,9 @@
     <select id="findUserById" parameterType="long" resultType="user">
         select * from t_user WHERE userId = #{userId};
     </select>
+    <select id="findUserByName" parameterType="string" resultType="user">
+        select * from t_user WHERE userName = #{userName};
+    </select>
 
     <select id="login" parameterType="map" resultType="user">
         select * from t_user WHERE userName = #{userName} AND userPwd = #{userPwd};
