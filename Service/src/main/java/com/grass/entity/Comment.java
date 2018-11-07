@@ -3,6 +3,9 @@ package com.grass.entity;
 
 import java.util.Date;
 
+/**
+ * 实体类
+ */
 public class Comment {
 
   private long id;

@@ -1,56 +1,53 @@
 package com.grass;
 
-
-import java.security.MessageDigest;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by huchao on 2017/10/30.
  */
 public class Test {
 
-   @org.junit.Test
-    public void test(){
-
-       String url = "http://dev.xiaodongxing.com/api/v3/base/sendCode/?F=android&V=3.5.0&timestamp=1519796193742&sign=50a1341047a7703b80af418a317ab4a4";
-
-
-       String phone = "token=2ef361611187132e10e6eccd815f9d1c&phone=13021020294&user_id=156";
-
-       System.out.println(getMD5(phone+"appkey=hhxy@#$685&timestamp=1519796193742"));
-    }
-
-    /**
-     * 功能:MD5加密
-     *
-     * @param s
-     */
-    public static String getMD5(String s) {
-        char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-        try {
-            byte[] btInput = s.getBytes();
-            // 获得MD5摘要算法的 MessageDigest 对象
-            MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            // 使用指定的字节更新摘要
-            mdInst.update(btInput);
-            // 获得密文
-            byte[] md = mdInst.digest();
-            // 把密文转换成十六进制的字符串形式
-            int j = md.length;
-            char str[] = new char[j * 2];
-            int k = 0;
-            for (int i = 0; i < j; i++) {
-                byte byte0 = md[i];
-                str[k++] = hexDigits[byte0 >>> 4 & 0xf];
-                str[k++] = hexDigits[byte0 & 0xf];
+    @org.junit.Test
+    public void test() {
+        String input = "12345678909tt23412345677909y";
+        List<String> phoneNums = new ArrayList<>();
+        //判断当前字符串是否大于11位
+        int firstNumAppear = input.indexOf("1");
+        boolean is1FirstNum = false;
+        for (int i = 0; i < input.length(); i++) {
+            //获得第i个字符
+            String value = input.substring(i, i + 1);
+            //出现数字
+            if (isInteger(value)) {
+                //判断是不是1
+                if ("1".equals(value) && firstNumAppear == 0 && !is1FirstNum) {
+                    is1FirstNum = true;
+                    firstNumAppear++;
+                } else {
+                    if (firstNumAppear != 0) {
+                        firstNumAppear++;
+                    }
+                }
+                if (firstNumAppear == 11) {
+                    firstNumAppear = 0;
+                    String nums = input.substring(i - 10, i + 1);
+                    if (!phoneNums.contains(nums)) {
+                        System.out.println("连续出现 11个数字");
+                        phoneNums.add(nums);
+                    }
+                }
+            } else {
+                firstNumAppear = 0;
+                is1FirstNum = false;
             }
-            return new String(str).toUpperCase();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
+        System.out.println(firstNumAppear + phoneNums.toString());
     }
 
-
+    public static boolean isInteger(String str) {
+        Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
+        return pattern.matcher(str).matches();
+    }
 }
